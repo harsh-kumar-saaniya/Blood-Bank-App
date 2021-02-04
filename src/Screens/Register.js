@@ -5,6 +5,9 @@ const Register = () => {
     return (
         <View>
             <Text>Working</Text>
+            <Text>Working</Text>
+            <Text>Working</Text>
+            <Text>Working</Text>
         </View>
     )
 }
