@@ -5,15 +5,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../Screens/SplashScreen';
 import Login from '../Screens/Login';
 import Register from '../Screens/Register';
+import Home from '../Screens/Home';
+import { Provider } from 'react-redux';
+import store from '../Store/index';
 
 const Stack = createStackNavigator();
 
 
 const AppNavigation = () => {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                {/* <Stack.Screen name="SplashScreen" component={SplashScreen}
+        <Provider store={store}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    {/* <Stack.Screen name="SplashScreen" component={SplashScreen}
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen name="Login" component={Login} options={{
@@ -22,9 +26,18 @@ const AppNavigation = () => {
                     },
                     headerShown: false
                 }} /> */}
-                <Stack.Screen name="Register" component={Register} />
-            </Stack.Navigator>
-        </NavigationContainer>
+                    <Stack.Screen name="Register" component={Register} />
+                    <Stack.Screen name="Home" component={Home} options={{
+                        headerStyle: {
+                            backgroundColor: 'red',
+                            // height: 
+                        },
+                        headerShown: false
+                    }} />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
+
     )
 }
 

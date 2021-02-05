@@ -22,7 +22,7 @@ import { RadioButton, Button } from 'react-native-paper';
 import DatePicker from 'react-native-date-picker';
 import { Picker } from '@react-native-picker/picker';
 
-const Register = () => {
+const Register = (props) => {
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -51,6 +51,7 @@ const Register = () => {
         else {
             console.log('this is user data====>>>', user)
         }
+        props.navigation.navigate('Home');
     }
 
     return (
