@@ -16,13 +16,15 @@ import {
     Textarea,
     Icon,
 } from 'native-base';
-
-
 import { RadioButton, Button } from 'react-native-paper';
 import DatePicker from 'react-native-date-picker';
 import { Picker } from '@react-native-picker/picker';
+import auth from '@react-native-firebase/auth';
+
+
 
 const Register = (props) => {
+
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -31,7 +33,8 @@ const Register = (props) => {
     const [gender, setGender] = useState("");
     const [date, setDate] = useState(new Date())
     const [selectedValue, setSelectedValue] = useState("");
-
+    const [city, setCity] = useState("");
+    const [contact, setContact] = useState("");
 
     const signUp = () => {
         const user = {
@@ -41,19 +44,20 @@ const Register = (props) => {
             selectedValue,
             userName,
             userEmail,
+            city,
+            contact,
             password,
             address
         }
-
-        if (user.checked === "first") {
-            console.log('donor email and password====>>>>>', user.userEmail, user.password)
-        }
-        else {
-            console.log('this is user data====>>>', user)
-        }
-        props.navigation.navigate('Home');
+        auth().createUserWithEmailAndPassword(user.userEmail, user.password)
+            .then((auth) => {
+                if (auth) {
+                    alert('Sign Up Successfully');
+                    props.navigation.navigate('Home');
+                }
+            })
+            .catch(error => alert(error.message))
     }
-
     return (
         <ScrollView>
             <View style={{ backgroundColor: '#fff', flex: 1 }}>
@@ -72,6 +76,7 @@ const Register = (props) => {
                             autoCompleteType={'email'}
                             onChangeText={(userEmail) => setUserEmail(userEmail)}
                             value={userEmail}
+                            keyboardType={'email-address'}
                         />
                     </Item>
                     <Item stackedLabel last>
@@ -83,14 +88,31 @@ const Register = (props) => {
                             secureTextEntry={true}
                         />
                     </Item>
+                    <Item stackedLabel>
+                        <Label>City</Label>
+                        <Input
+                            onChangeText={(city) => setCity(city)}
+                            value={city}
+                        />
+                    </Item>
+                    <Item stackedLabel>
+                        <Label>Contact No:</Label>
+                        <Input
+                            onChangeText={(contact) => setContact(contact)}
+                            value={contact}
+                            keyboardType={'number-pad'}
+                        />
+                    </Item>
+
                     <View style={styles.form__address}>
-                        <Label style={{ paddingBottom: 10 }}>Address: </Label>
+                        <Label style={{ paddingBottom: 10, color: 'black' }}>Address: </Label>
                         <Textarea
                             onChangeText={(address) => setAddress(address)}
                             value={address}
                             rowSpan={3} bordered placeholder="Write Your address here..."
                         />
                     </View>
+
 
                     <View style={styles.form__purpose}>
                         <Label style={{

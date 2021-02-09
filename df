@@ -1,0 +1,23 @@
+[33mcommit d5d1d13a6975583b9d85a4628334729ca0b9f691[m[33m ([m[1;36mHEAD -> [m[1;32mappBranch[m[33m, [m[1;31morigin/appBranch[m[33m, [m[1;32mthirdBranch[m[33m)[m
+Author: harsh-kumar-saaniya <harshvithal1@gmail.com>
+Date:   Fri Feb 5 15:07:59 2021 -0800
+
+    home page ui structure is almost compelete
+
+[33mcommit 94f7a0455e987596f1804027108916c0abcab70a[m[33m ([m[1;31morigin/newbranch[m[33m, [m[1;32mnewbranch[m[33m)[m
+Author: harsh-kumar-saaniya <harshvithal1@gmail.com>
+Date:   Thu Feb 4 14:42:11 2021 -0800
+
+    Register Ui completed and install packages for creating ui
+
+[33mcommit b54eb887cfb343ca7daa39512c11c29be4a6192e[m
+Author: harsh-kumar-saaniya <harshvithal1@gmail.com>
+Date:   Thu Feb 4 14:06:03 2021 -0800
+
+    Working With Register or sign up functionality
+
+[33mcommit 15e4365d1dbf4739488700615a73706ee165730d[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: harsh-kumar-saaniya <harshvithal1@gmail.com>
+Date:   Thu Feb 4 12:26:18 2021 -0800
+
+    First commit ui of sign in is prefectly working

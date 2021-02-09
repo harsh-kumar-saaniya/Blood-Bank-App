@@ -17,20 +17,19 @@ const AppNavigation = () => {
         <Provider store={store}>
             <NavigationContainer>
                 <Stack.Navigator>
-                    {/* <Stack.Screen name="SplashScreen" component={SplashScreen}
-                    options={{ headerShown: false }}
-                />
-                <Stack.Screen name="Login" component={Login} options={{
-                    headerStyle: {
-                        backgroundColor: 'white',
-                    },
-                    headerShown: false
-                }} /> */}
+                    <Stack.Screen name="SplashScreen" component={SplashScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen name="Login" component={Login} options={{
+                        headerStyle: {
+                            backgroundColor: 'white',
+                        },
+                        headerShown: false
+                    }} />
                     <Stack.Screen name="Register" component={Register} />
                     <Stack.Screen name="Home" component={Home} options={{
                         headerStyle: {
                             backgroundColor: 'red',
-                            // height: 
                         },
                         headerShown: false
                     }} />

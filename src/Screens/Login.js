@@ -1,15 +1,39 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
+import auth from '@react-native-firebase/auth';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
 const Login = (props) => {
+
+    console.log('props====>>>>>', props.user);
+
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
-    const SignUp = () => {
-        console.log('working');
-    };
+
+    const dispatch = useDispatch();
+
+
+    const SignIn = () => {
+
+        auth().signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                alert('Sign In successfully');
+                dispatch({
+                    type: 'USERSTATUS',
+                    userActive: true,
+                })
+                props.navigation.navigate('Home')
+            })
+            .catch(error => alert(error.message));
+
+
+
+    }
+
     return (
         <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
             <View style={styles.login}>
@@ -31,7 +55,7 @@ const Login = (props) => {
                     secureTextEntry={true}
                     style={{ marginBottom: 15, }}
                 />
-                <Button style={{ marginTop: 10, borderRadius: 7 }} contentStyle={{ height: 50, backgroundColor: 'red' }} mode="contained" onPress={SignUp}>
+                <Button style={{ marginTop: 10, borderRadius: 7 }} contentStyle={{ height: 50, backgroundColor: 'red' }} mode="contained" onPress={SignIn}>
                     <Text style={{ fontSize: 15, fontWeight: 'bold' }}>SIGN IN</Text>
                 </Button>
                 <View style={styles.login__createAccount}>
@@ -79,5 +103,15 @@ const styles = StyleSheet.create({
     },
 });
 
+const mapStateToProps = (state) => ({
+    user: state.user
+});
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+    // set_data: () => dispatch(set_data())
+})
+
+
+const connectedComponent = connect(mapStateToProps, mapDispatchToProps);
+
+export default connectedComponent(Login);
